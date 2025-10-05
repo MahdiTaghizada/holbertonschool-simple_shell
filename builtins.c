@@ -6,7 +6,7 @@
  *
  * Return: 1 if built-in, 0 otherwise
  */
-int is_builtin(char **argv)
+int is_builtin(char **argv, char *line)
 {
 	if (_strcmp(argv[0], "exit") == 0)
 	{
