@@ -38,7 +38,9 @@ void simple_shell(void)
 
 		if (find_command(argv[0]) == NULL)
 		{
-			perror(argv[0]);
+			write(STDERR_FILENO, "./hsh: 1: ", 10);
+			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+			write(STDERR_FILENO, ": not found\n", 12);
 			continue;
 		}
 

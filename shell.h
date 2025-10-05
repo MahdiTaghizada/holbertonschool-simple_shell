@@ -18,6 +18,7 @@ char **parse_command(char *line);
 char *find_command(char *command);
 void execute_command(char **argv);
 char *_getenv(const char *name);
+int _strlen(const char *s);
 
 extern char **environ;
 

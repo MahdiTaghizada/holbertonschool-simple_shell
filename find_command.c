@@ -22,6 +22,9 @@ char *find_command(char *command)
 	path_env = _getenv("PATH");
 	if (!path_env)
 		return (NULL);
+ 
+	if (!path_env || path_env[0] == '\0')
+		return (NULL);
 
 	path_copy = strdup(path_env);
 	if (!path_copy)
