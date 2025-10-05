@@ -7,6 +7,8 @@
  */
 int main(void)
 {
-	simple_shell();
-	return (0);
+	int status;
+	
+	status = simple_shell();
+	return (status);  
 }

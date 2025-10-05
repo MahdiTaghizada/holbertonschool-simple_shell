@@ -3,7 +3,7 @@
 /**
  * simple_shell - main loop of shell
  */
-void simple_shell(void)
+int simple_shell(void)
 {
 	char *line = NULL;
 	size_t len = 0;
@@ -63,4 +63,5 @@ void simple_shell(void)
 		else
 			waitpid(pid, &status, 0);
 	}
+	return (last_status);
 }
