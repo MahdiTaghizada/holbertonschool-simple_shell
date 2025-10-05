@@ -10,6 +10,7 @@ int is_builtin(char **argv)
 {
 	if (_strcmp(argv[0], "exit") == 0)
 	{
+		free(line);
 		exit(0);
 	}
 	return (0);

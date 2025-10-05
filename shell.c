@@ -37,7 +37,7 @@ int simple_shell(void)
 		if (argv[0] == NULL)
 			continue;
 
-		if (is_builtin(argv))
+		if (is_builtin(argv, line))
 		{
 			continue;
 		}
