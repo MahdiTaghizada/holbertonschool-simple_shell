@@ -19,15 +19,12 @@ char *find_command(char *command)
 		else
 			return (NULL);
 	}
-
 	path_env = _getenv("PATH");
 	if (!path_env || path_env[0] == '\0')
 		return (NULL);
-
 	path_copy = strdup(path_env);
 	if (!path_copy)
 		return (NULL);
-
 	dir = strtok(path_copy, ":");
 	while (dir)
 	{
@@ -38,19 +35,15 @@ char *find_command(char *command)
 			free(path_copy);
 			return (NULL);
 		}
-		
 		sprintf(full_path_result, "%s/%s", dir, command);
-
 		if (access(full_path_result, X_OK) == 0)
 		{
 			free(path_copy);
 			return (full_path_result);
 		}
-
 		free(full_path_result);
 		dir = strtok(NULL, ":");
 	}
-
 	free(path_copy);
 	return (NULL);
 }
