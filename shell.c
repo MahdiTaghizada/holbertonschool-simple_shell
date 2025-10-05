@@ -37,6 +37,11 @@ int simple_shell(void)
 		if (argv[0] == NULL)
 			continue;
 
+		if (is_builtin(argv))
+		{
+			continue;
+		}
+
 		if (find_command(argv[0]) == NULL)
 		{
 			write(STDERR_FILENO, "./hsh: 1: ", 10);

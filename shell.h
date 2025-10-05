@@ -19,6 +19,7 @@ char *find_command(char *command);
 void execute_command(char **argv);
 char *_getenv(const char *name);
 int _strlen(const char *s);
+int is_builtin(char **argv);
 
 extern char **environ;
 
