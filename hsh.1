@@ -1,0 +1,44 @@
+.TH HSH 1 "September 2025" "Holberton" "General Commands Manual"
+.SH NAME
+hsh \- a simple Holberton command line interpreter (shell)
+.SH SYNOPSIS
+.B hsh
+.SH DESCRIPTION
+.B hsh
+is a simple command line interpreter that reads and executes commands either interactively from the user or non-interactively via a pipe.
+
+.SS Command Search and Execution
+.B hsh
+parses the input line into command arguments. It first checks for built-in commands. If the command is not a built-in, it checks for a direct path. Finally, it searches the directories listed in the
+.B $PATH
+environment variable. Found commands are executed in a child process created by
+.B fork(2)
+and
+.B execve(2).
+.SS Prompt
+In interactive mode,
+.B hsh
+prompts the user for input with the following string:
+.nf
+:)
+.fi
+.SH BUILT-IN COMMANDS
+.TP
+.B exit
+Exits the shell. If no status is provided, it exits with the status of the last executed command.
+.TP
+.B env
+Prints all current environment variables to standard output.
+.SH ENVIRONMENT VARIABLES
+.TP
+.B PATH
+A colon-separated list of directories in which the shell searches for executable programs.
+.SH EXIT STATUS
+The exit status is that of the last executed command. A status of **127** is returned if the command is not found.
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR fork (2),
+.BR execve (2)
+.SH AUTHORS
+See the **AUTHORS** file at the root of the repository for the list of contributors.
