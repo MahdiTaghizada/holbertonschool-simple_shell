@@ -10,7 +10,7 @@ char *_getenv(const char *name)
 {
 	int i;
 	size_t name_len = 0;
-	
+
 	while (name[name_len] != '\0')
 		name_len++;
 	for (i = 0; environ[i] != NULL; i++)
