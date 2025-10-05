@@ -73,6 +73,5 @@ int simple_shell(void)
 			last_status = WEXITSTATUS(status);
 	}
 
-	free(line);
 	return (last_status);
 }
