@@ -15,11 +15,11 @@ int is_builtin(char **argv, char *line, int *last_status)
 	}
 
 	if (_strcmp(argv[0], "env") == 0)
-    {
+	{
 		handle_env();
 		*last_status = 0;
 		return (1);
-    }
+	}
 	return (0);
 }
 
