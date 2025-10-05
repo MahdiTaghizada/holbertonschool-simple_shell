@@ -25,4 +25,4 @@ void handle_env(void);
 
 extern char **environ;
 
-#endif /* SHELL_H */
+#endif

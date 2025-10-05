@@ -4,12 +4,13 @@
  * _getenv - gets an environment variable
  * @name: the name of the environment variable to find
  *
- * Return: pointer to the value of the environment variable, or NULL if not found
+ * Return: pointer to the value of the environment variable
  */
 char *_getenv(const char *name)
 {
 	int i;
 	size_t name_len = 0;
+	
 	while (name[name_len] != '\0')
 		name_len++;
 	for (i = 0; environ[i] != NULL; i++)
