@@ -19,7 +19,7 @@ char *find_command(char *command)
 			return (NULL);
 	}
 
-	path_env = getenv("PATH");
+	path_env = _getenv("PATH");
 	if (!path_env)
 		return (NULL);
 

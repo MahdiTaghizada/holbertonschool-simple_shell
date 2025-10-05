@@ -17,6 +17,7 @@ void simple_shell(void);
 char **parse_command(char *line);
 char *find_command(char *command);
 void execute_command(char **argv);
+char *_getenv(const char *name);
 
 extern char **environ;
 
