@@ -19,7 +19,7 @@ char *find_command(char *command);
 void execute_command(char **argv);
 char *_getenv(const char *name);
 int _strlen(const char *s);
-int is_builtin(char **argv, char *line);
+int is_builtin(char **argv, char *line, int *last_status);
 int _strcmp(char *s1, char *s2);
 
 extern char **environ;

@@ -6,12 +6,12 @@
  *
  * Return: 1 if built-in, 0 otherwise
  */
-int is_builtin(char **argv, char *line)
+int is_builtin(char **argv, char *line, int *last_status)
 {
 	if (_strcmp(argv[0], "exit") == 0)
 	{
 		free(line);
-		exit(0);
+		exit(*last_status);
 	}
 	return (0);
 }

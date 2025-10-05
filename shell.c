@@ -37,7 +37,7 @@ int simple_shell(void)
 		if (argv[0] == NULL)
 			continue;
 
-		if (is_builtin(argv, line))
+		if (is_builtin(argv, line, &last_status))
 		{
 			continue;
 		}
@@ -65,8 +65,14 @@ int simple_shell(void)
 			perror("./shell");
 			exit(127);
 		}
+
 		else
 			waitpid(pid, &status, 0);
+
+		if (WIFEXITED(status))
+			last_status = WEXITSTATUS(status);
 	}
+
+	free(line);
 	return (last_status);
 }
