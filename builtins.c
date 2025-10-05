@@ -2,9 +2,11 @@
 
 /**
  * is_builtin - checks if the command is a built-in
- * @argv: argument vector
+ * @argv: argument vector (parsed command and arguments)
+ * @line: The input line buffer (needed for freeing memory before exiting).
+ * @last_status: Pointer to the last exit status of the previous command.
  *
- * Return: 1 if built-in, 0 otherwise
+ * Return: 1 if built-in command was executed, 0 otherwise.
  */
 int is_builtin(char **argv, char *line, int *last_status)
 {
