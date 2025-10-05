@@ -11,6 +11,7 @@ void simple_shell(void)
 	char **argv;
 	pid_t pid;
 	int status;
+	int last_status = 0;
 
 	while (1)
 	{
@@ -41,6 +42,7 @@ void simple_shell(void)
 			write(STDERR_FILENO, "./hsh: 1: ", 10);
 			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
 			write(STDERR_FILENO, ": not found\n", 12);
+			last_status = 127;
 			continue;
 		}
 
@@ -56,7 +58,7 @@ void simple_shell(void)
 		{
 			execute_command(argv);
 			perror("./shell");
-			exit(EXIT_FAILURE);
+			exit(127);
 		}
 		else
 			waitpid(pid, &status, 0);
