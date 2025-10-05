@@ -59,6 +59,4 @@ void simple_shell(void)
 		else
 			waitpid(pid, &status, 0);
 	}
-
-	free(line);
 }
