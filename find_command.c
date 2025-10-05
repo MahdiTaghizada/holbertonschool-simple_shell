@@ -4,25 +4,23 @@
  * find_command - search command in PATH
  * @command: command name
  *
- * Return: full path if found, NULL otherwise
+ * Return: full path if found (MUST BE FREED BY CALLER), NULL otherwise
  */
 char *find_command(char *command)
 {
 	char *path_env, *path_copy, *dir;
-	static char fullpath[MAX_PATH];
+	char *full_path_result;
+	int len;
 
 	if (command[0] == '/' || command[0] == '.')
 	{
 		if (access(command, X_OK) == 0)
-			return (command);
+			return (strdup(command));
 		else
 			return (NULL);
 	}
 
 	path_env = _getenv("PATH");
-	if (!path_env)
-		return (NULL);
-
 	if (!path_env || path_env[0] == '\0')
 		return (NULL);
 
@@ -33,12 +31,23 @@ char *find_command(char *command)
 	dir = strtok(path_copy, ":");
 	while (dir)
 	{
-		snprintf(fullpath, MAX_PATH, "%s/%s", dir, command);
-		if (access(fullpath, X_OK) == 0)
+		len = _strlen(dir) + _strlen(command) + 2;
+		full_path_result = malloc(len);
+		if (!full_path_result)
 		{
 			free(path_copy);
-			return (fullpath);
+			return (NULL);
 		}
+		
+		sprintf(full_path_result, "%s/%s", dir, command);
+
+		if (access(full_path_result, X_OK) == 0)
+		{
+			free(path_copy);
+			return (full_path_result);
+		}
+
+		free(full_path_result);
 		dir = strtok(NULL, ":");
 	}
 
